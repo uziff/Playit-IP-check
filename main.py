@@ -18,6 +18,14 @@ def build_subnet(base_ip, region):
     for ip in blocked_ips:
         print(f"[{ip}]: Blocked.")
 
+initial_ips = ["api.playit.gg", "ping.ply.gg", "147.185.221.1"]
+
+for ip in initial_ips:
+    if not pingprocess(ip):
+        print(f"{ip} failed.")
+    else:
+        print(f"{ip} OK.")
+
 subnets = {
     "147.185.221": "GLOBAL",
     "209.25.140": "AMERICA",
