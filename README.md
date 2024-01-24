@@ -1,2 +1,2 @@
 # Playit-IP-check
-Checks if any Playit's IP is blocked by your isp
+Checks if any of the IPs in the Playit.gg's Anycast Network is getting blocked by your ISP!
