@@ -25,6 +25,12 @@ def AutoFlush():
     if platform.system().lower() == 'Windows':
         param = '/flushdns'
         command = ['ipconfig', param]
+    elif platform.system().lower() == 'linux':
+        command = ['sudo', 'systemd-resolve', '--flush-caches']
+    elif platform.system().lower() == 'darwin':
+        command = ['sudo', 'killall', '-HUP', 'mDNSResponder']
+    else:
+        return False
     return subprocess.call(command, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT) == 0
 
 def pingprocess(ip):
@@ -51,7 +57,6 @@ def automatic_mode():
     def is_playit_there():
         command = ['playit', '--help']
         try:
-            print(f" {Fore.YELLOW}Playit{Fore.LIGHTBLACK_EX} is {Fore.GREEN}Installed{Fore.LIGHTBLACK_EX}.")
             return subprocess.call(command, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT) == 0
         except FileNotFoundError:
             return False
@@ -87,6 +92,8 @@ def automatic_mode():
     if not is_playit_there():
         print(f" {Fore.YELLOW}Playit CLI tool{Fore.LIGHTBLACK_EX} is {Fore.RED}not{Fore.LIGHTBLACK_EX} installed or {Fore.RED}not found{Fore.LIGHTBLACK_EX} in PATH.")
         return
+    else:
+        print(f" {Fore.YELLOW}Playit{Fore.LIGHTBLACK_EX} is {Fore.GREEN}Installed{Fore.LIGHTBLACK_EX}.")
 
     output = get_playit_tunnels()
     if output:
