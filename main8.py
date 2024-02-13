@@ -34,7 +34,7 @@ def AutoFlush():
     return subprocess.call(command, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT) == 0
 
 def pingprocess(ip):
-    param = '-n' if platform.system().lower()=='windows' else '-c'
+    param = '-n' if platform.system().lower()=='Windows' else '-c'
     command = ['ping', param, '2', ip]
     return subprocess.call(command, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT) == 0
 
