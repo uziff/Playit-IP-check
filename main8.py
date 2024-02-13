@@ -11,7 +11,7 @@ import subprocess
 
 init(autoreset=True)
 def title():
-    if platform.system().lower() == 'Windows':
+    if platform.system().lower() == 'windows':
         os.system(f"title PLAYIT.GG")
     else:
         sys.stdout.write(f"\x1b]2;PLAYIT.GG\x07")
@@ -22,7 +22,7 @@ def cls():
     os.system(command)
 
 def AutoFlush():
-    if platform.system().lower() == 'Windows':
+    if platform.system().lower() == 'windows':
         param = '/flushdns'
         command = ['ipconfig', param]
     elif platform.system().lower() == 'linux':
@@ -34,7 +34,7 @@ def AutoFlush():
     return subprocess.call(command, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT) == 0
 
 def pingprocess(ip):
-    param = '-n' if platform.system().lower()=='Windows' else '-c'
+    param = '-n' if platform.system().lower()=='windows' else '-c'
     command = ['ping', param, '2', ip]
     return subprocess.call(command, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT) == 0
 
