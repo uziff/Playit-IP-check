@@ -177,7 +177,10 @@ if __name__ == "__main__":
 
     if user_mode == 1:
         automatic_mode()
+        input()
     elif user_mode == 2:
         bruteforce_mode()
+        input()
     elif user_mode == 3:
         manual_mode()
+        input()
