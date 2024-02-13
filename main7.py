@@ -128,19 +128,20 @@ def manual_mode():
             ip = input(f" Please enter your tunnel {Fore.CYAN}address{Fore.YELLOW}/{Fore.BLUE}ipv4{Style.RESET_ALL}: ")
             if (ip.lower())=="idk":
                 webbrowser.open("https://i.imgur.com/kTeKsRO.png", new=2)
-            address = ip.split(':')[0]
-            if not pingprocess("ping.ply.gg"):
-                try:
-                    if not address.replace('.', '').isdigit():
-                        address = socket.gethostbyname(address)
-                except socket.gaierror:
-                    print(f" {Style.RESET_ALL}[{Fore.RED}ERROR.{Style.RESET_ALL}] Please use the IPV4.")
             else:
-                if pingprocess(address):
-                    print(f" [{address}]: {Fore.GREEN}OK.")
+                address = ip.split(':')[0]
+                if not pingprocess("ping.ply.gg"):
+                    try:
+                        if not address.replace('.', '').isdigit():
+                            address = socket.gethostbyname(address)
+                    except socket.gaierror:
+                        print(f" {Style.RESET_ALL}[{Fore.RED}ERROR.{Style.RESET_ALL}] Please use the IPV4.")
                 else:
-                    print(f" [{address}]: {Fore.RED}Blocked.")
-                break
+                    if pingprocess(address):
+                        print(f" [{address}]: {Fore.GREEN}OK.")
+                    else:
+                        print(f" [{address}]: {Fore.RED}Blocked.")
+                    break
         except ValueError:
             print(f" Wrong Input.")
 
