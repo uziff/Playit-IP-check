@@ -11,7 +11,7 @@ To execute this source code is very simple:
 ```
 pip install colorama
 ```
-3. Download the program from [here](https://github.com/uziff/Playit-datacenter-check/releases).
+3. Download the program from [here](https://github.com/uziff/Playit-IP-check/releases).
 4. Then run the code by simply tiping:
 ```
 py playit-ip.py
